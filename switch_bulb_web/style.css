@@ -1,143 +1,125 @@
 :root{
-  --bulb-off:#d1d5db;
-  --bulb-on:#facc15;
-  --outline:#374151;
-  --bg:#0f172a; --fg:#e5e7eb; --muted:#94a3b8;
-  --accent:#38bdf8; --ok:#22c55e;
+  --bg:#f7fafc; --panel:#ffffff; --fg:#111827; --muted:#4b5563;
+  --border:#e5e7eb; --accent:#2563eb; --ok:#16a34a; --warn:#d97706;
+  --bulb-off:#e5e7eb; --bulb-on:#facc15; --outline:#cbd5e1;
+  --shadow: 0 8px 24px rgba(17,24,39,.08);
 }
 *{box-sizing:border-box}
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  margin:0; padding:24px; background:var(--bg); color:var(--fg);
+  margin:0; padding:20px; background:var(--bg); color:var(--fg);
 }
-/* Back-to-home topbar */
+
+/* Back-to-home topbar (light) */
 .topbar{
   position: sticky; top: 0; z-index: 50;
-  background:#0b1220; border-bottom:1px solid #334155;
+  background:var(--panel); border-bottom:1px solid var(--border);
   padding:10px 16px; display:flex; justify-content:flex-start;
 }
 .back-btn{
-  appearance:none; border:1px solid #334155;
-  background:linear-gradient(135deg, #38bdf8, #22c55e);
-  color:#041018; font-weight:800; letter-spacing:.2px;
+  appearance:none; border:1px solid var(--border);
+  background:linear-gradient(135deg, #2563eb, #10b981);
+  color:#fff; font-weight:800; letter-spacing:.2px;
   padding:10px 14px; border-radius:999px; cursor:pointer;
-  box-shadow:0 6px 18px rgba(56,189,248,.35);
+  box-shadow:0 6px 16px rgba(37,99,235,.25);
   transition:transform .12s ease, box-shadow .12s ease, filter .15s ease;
 }
-.back-btn:hover{ transform:translateY(-1px); box-shadow:0 12px 26px rgba(0,0,0,.35) }
+.back-btn:hover{ transform:translateY(-1px); box-shadow:0 12px 24px rgba(17,24,39,.12) }
 .back-btn:active{ transform:translateY(0) }
-.back-btn:focus-visible{ outline:3px solid #38bdf8; outline-offset:3px }
-/* Mobile tweaks */
-@media (max-width: 640px){
-  .topbar{ padding:12px 12px }
-  .back-btn{ width:100%; justify-content:center; display:inline-flex; align-items:center; }
-}
+.back-btn:focus-visible{ outline:3px solid #2563eb; outline-offset:3px }
 
-.container{max-width:1060px;margin:0 auto}
-h1{margin:0 0 8px;font-size:28px}
+.container{max-width:900px;margin:0 auto}
+h1{margin:8px 0 6px;font-size:28px}
 h2{margin:12px 0 8px;font-size:18px}
-.tip{opacity:.9;margin:0 0 16px;color:var(--muted)}
+.tip{opacity:.95;margin:0 0 16px;color:var(--muted)}
+
+/* Vertical layout always */
 .grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
+  grid-template-columns: 1fr;
+  gap:20px;
   align-items:start;
 }
+
+/* Bulb board */
 .bulbs{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
-  gap:16px;
-}
-.switches{
-  display:grid;
-  grid-template-columns: repeat(1, minmax(320px, 1fr));
-  gap:12px;
+  gap:14px;
 }
 .bulb{
-  width:96px;height:96px;border-radius:999px;
+  width:88px; height:88px; border-radius:999px;
   border:3px solid var(--outline);
   background:var(--bulb-off);
-  box-shadow:0 2px 10px rgba(0,0,0,0.35) inset;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), var(--shadow);
   transition:background .15s ease;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;color:#111827;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; color:#111827;
 }
 .bulb.on{background:var(--bulb-on)}
+
+/* Switch panels */
+.switches{ display:grid; grid-template-columns: 1fr; gap:12px; }
 .switchcard{
-  border:1px solid #334155; border-radius:12px; padding:10px 12px; background:#111827;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px; padding:12px; box-shadow: var(--shadow);
 }
 .switchrow{
-  display:flex; align-items:center; gap:12px; margin-bottom:8px;
+  display:flex; align-items:center; gap:12px; margin-bottom:10px;
 }
 .toggle{
-  appearance:none; width:54px; height:30px; border-radius:999px; position:relative; outline:none;
-  background:#1f2937; border:1px solid #334155; cursor:pointer; transition:background .15s ease;
+  appearance:none; width:56px; height:32px; border-radius:999px; position:relative; outline:none;
+  background:#e5e7eb; border:1px solid var(--border); cursor:pointer; transition:background .15s ease;
 }
 .toggle:before{
-  content:""; position:absolute; top:3px; left:3px; width:24px; height:24px; border-radius:999px; background:#e5e7eb;
+  content:""; position:absolute; top:3px; left:3px; width:26px; height:26px; border-radius:999px; background:#ffffff;
+  box-shadow:0 1px 2px rgba(0,0,0,.08);
   transition:transform .15s ease;
 }
-.toggle:checked{background:#065f46}
+.toggle:checked{background:#34d399}
 .toggle:checked:before{transform:translateX(24px)}
 .switchlbl{min-width:86px; font-weight:600}
 .statepill{
-  font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #334155; color:var(--muted);
+  font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); color:var(--muted); background:#f8fafc;
 }
-.statepill.on{color:#10b981; border-color:#115e59}
+.statepill.on{color:#059669; border-color:#bbf7d0; background:#ecfdf5}
+
+/* If–else block */
 .logic{
-  background:#0b1220; border:1px solid #334155; border-radius:8px; padding:8px 10px;
+  background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:8px 10px;
   font-family:ui-monospace, SF Mono, Menlo, Consolas, monospace; font-size:13px; white-space:pre; line-height:1.35;
   margin-top:6px;
 }
-.logic .line{opacity:.75}
-.logic .line.hit{opacity:1; color:#e5e7eb; background:#0f1b33; border-left:3px solid var(--accent); padding-left:6px}
+.logic .line{opacity:.85}
+.logic .line.hit{opacity:1; color:#0f172a; background:#eef2ff; border-left:3px solid var(--accent); padding-left:6px}
+
+/* Logic controls */
 .logic-controls{
-  display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin:6px 0 2px;
+  display:grid; grid-template-columns: 1fr; gap:8px; margin:6px 0 2px;
 }
-.logic-controls label{
-  font-size:12px; color:var(--muted);
-}
+.logic-controls label{ font-size:12px; color:var(--muted) }
 .logic-controls select{
-  width:100%; padding:6px 8px; border-radius:8px; border:1px solid #334155; background:#0b1220; color:var(--fg);
+  width:100%; padding:6px 8px; border-radius:8px; border:1px solid var(--border); background:#fff; color:var(--fg);
   cursor:pointer;
 }
-.actions{margin-top:24px}
-#resetBtn{
-  padding:10px 16px;background:#334155;color:#e5e7eb;border:1px solid #475569;border-radius:10px;
-  cursor:pointer
-}
-#resetBtn:hover{background:#1f2937}
-.win{ color:#22c55e;font-weight:700; }
-.warn{ color:#fbbf24; font-weight:700 }
 
-/* ===== Responsive: Switch & Bulb ===== */
-@media (max-width: 1200px){
-  .bulbs{ grid-template-columns: repeat(4, 1fr); }
+.actions{margin-top:18px}
+#resetBtn{
+  padding:10px 16px; background:#fff; color:var(--fg);
+  border:1px solid var(--border); border-radius:10px; cursor:pointer; box-shadow: var(--shadow);
 }
-@media (max-width: 992px){
-  .grid{ grid-template-columns: 1fr; }
-  .bulbs{ grid-template-columns: repeat(4, 1fr); }
-  .switches{ grid-template-columns: 1fr; }
+#resetBtn:hover{ filter:brightness(1.02) }
+
+.win{ color:var(--ok); font-weight:700 }
+.warn{ color:var(--warn); font-weight:700 }
+
+/* Small-device refinements (vertical stays the same) */
+@media (max-width: 640px){
+  .bulbs{ grid-template-columns: repeat(3, 1fr); }
+  .bulb{ width:78px; height:78px; }
 }
-@media (max-width: 768px){
-  .bulbs{ grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .bulb{ width: 84px; height: 84px; }
-  .logic{ font-size: 12.5px; }
-  .toggle{ width: 60px; height: 34px; }
-  .toggle:before{ width: 26px; height: 26px; }
-  .switchrow{ gap: 10px; }
-}
-@media (max-width: 560px){
-  .bulbs{ grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .bulb{ width: 72px; height: 72px; }
-  .logic{ font-size: 12px; }
-  .logic-controls{ grid-template-columns: 1fr; }
-  .switchlbl{ min-width: auto; }
-  .toggle{ width: 58px; height: 32px; }
-  .toggle:before{ width: 24px; height: 24px; }
-}
-@media (max-width: 400px){
-  .bulb{ width: 64px; height: 64px; }
-  .switchcard{ padding: 8px 10px; }
-  .logic{ padding: 6px 8px; }
+@media (max-width: 420px){
+  .bulbs{ grid-template-columns: repeat(2, 1fr); }
+  .bulb{ width:68px; height:68px; }
 }
