@@ -94,7 +94,7 @@ function renderSwitches() {
     // Logic controls
     const controls = document.createElement('div');
     controls.className = 'logic-controls';
-    controls.appendChild(selectControl('If switch is ON → bulb =', logicConfig[idx].ifOn, v => { logicConfig[idx].ifOn = v; render(); }));
+    controls.appendChild(selectControl('If switch is ON → bulb =', logicConfig[idx].ifOff, v => { logicConfig[idx].ifOff = v; render(); }));
     controls.appendChild(selectControl('Else (switch OFF) → bulb =', logicConfig[idx].ifOff, v => { logicConfig[idx].ifOff = v; render(); }));
 
     // Code-like block
