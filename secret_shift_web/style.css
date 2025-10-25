@@ -10,7 +10,6 @@ body{
   background:var(--bg); color:var(--fg);
 }
 
-/* Back-to-home topbar (light) */
 .topbar{
   position: sticky; top: 0; z-index: 50;
   background:var(--panel); border-bottom:1px solid var(--border);
@@ -32,7 +31,6 @@ body{
 h1{margin:0 0 10px}
 .desc{margin:0 0 18px;color:var(--muted)}
 
-/* Vertical by default */
 .statusbar{display:flex; flex-direction:column; gap:6px; margin-bottom:12px; opacity:.95}
 .panel{
   padding:14px; border:1px solid var(--border); border-radius:12px; background:var(--panel);
@@ -57,7 +55,6 @@ h1{margin:0 0 10px}
 .ok{color:var(--ok)} .warn{color:var(--warn)} .info{color:var(--accent)}
 #cipher{font-family:ui-monospace, SF Mono, Menlo, Consolas, monospace}
 
-/* Minor responsive polish */
 @media (max-width: 420px){
   .panel{ padding: 12px; }
   .log{ min-height: 120px; }

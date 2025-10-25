@@ -6,10 +6,7 @@ const resetBtn = document.getElementById('resetBtn');
 
 // Switch positions (inputs)
 let currentSwitch = [false, false, false, false, false];
-// Logic mapping per switch: what the bulb should be for ON and OFF branches
-// Default mirrors the original: if ON -> ON, else -> OFF
 let logicConfig = Array.from({length:5}, () => ({ ifOn: false, ifOff: false }));
-
 
 function computeBulbState(idx) {
   const sw = currentSwitch[idx];
@@ -108,13 +105,11 @@ function renderSwitches() {
   }
 }
 
-// ---- Quality check helpers ----
 function allBulbsOn() {
   for (let i = 0; i < 5; i++) if (!computeBulbState(i)) return false;
   return true;
 }
 function degenerateSwitchIndices() {
-  // Only the specific case requested: IF ON -> ON AND IF OFF -> ON
   const out = [];
   for (let i = 0; i < 5; i++) {
     if (logicConfig[i].ifOn === true && logicConfig[i].ifOff === true) out.push(i);
@@ -122,7 +117,6 @@ function degenerateSwitchIndices() {
   return out;
 }
 
-// ---- Render & status ----
 function render() {
   renderBulbs();
   renderSwitches();
@@ -158,7 +152,6 @@ function updateStatus() {
 
 resetBtn.addEventListener('click', reset);
 
-// Back to Home navigation
 (function(){
   var btn = document.getElementById('backHomeSB');
   if (btn) btn.addEventListener('click', function(){ location.assign('../index.html'); });
