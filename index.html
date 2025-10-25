@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Workshop Games — Landing</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="branding">
+      <h1>Workshop: Interactive Web Games</h1>
+      <p class="tagline">Choose a game to start. Everything runs locally in your browser.</p>
+    </div>
+  </header>
+
+  <main class="hero">
+    <section class="intro">
+      <p>
+        This site contains two small learning games. <strong>Switch & Bulb</strong> explores basic control logic
+        with modifiable <em>if–else</em> branches, while <strong>Secret Shift</strong> is a Caesar-cipher
+        guessing challenge. Pick one below — the big buttons are the navigation.
+      </p>
+    </section>
+
+    <nav class="nav-grid" aria-label="Game navigation">
+      <button class="nav-card" data-href="switch_bulb_web/index.html" aria-label="Open Switch and Bulb game">
+        <span class="emoji">💡</span>
+        <span class="title">Switch & Bulb</span>
+        <span class="desc">Toggle switches and design the logic that lights each bulb.</span>
+        <span class="cta">Play</span>
+      </button>
+
+      <button class="nav-card" data-href="secret_shift_web/index.html" aria-label="Open Secret Shift game">
+        <span class="emoji">🔐</span>
+        <span class="title">Secret Shift</span>
+        <span class="desc">Guess the Caesar shift with instant preview as you type.</span>
+        <span class="cta">Play</span>
+      </button>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with vanilla <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>. No frameworks needed.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secret Shift — Guess the Shift</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script>
+    // Inject phrases so JS can consume them
+    window.__PHRASES__ = ["HELLO WORLD", "CYBERSECURITY", "SINGAPORE", "THE NEW ERA", "KNOWLEDGE IS POWER"];
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Secret Shift — Guess the Shift</h1>
+    <p class="desc">
+      Guess the Caesar shift (1–25). The <strong>Preview</strong> updates automatically as you change the guess.
+    </p>
+
+    <div class="statusbar">
+      <div id="round">Round 1/1</div>
+      <div id="score">Score: 0</div>
+    </div>
+
+    <div class="panel">
+      <div><strong>Ciphertext:</strong> <span id="cipher"></span></div>
+      <div><strong>Preview:</strong> <span id="preview">—</span></div>
+    </div>
+
+    <div class="controls">
+      <label>Guess shift (1–25): <input type="number" id="guess" min="1" max="25" value="1"/></label>
+      <button id="guessBtn">Submit guess</button>
+      <button id="skipBtn">Skip</button>
+      <button id="newBtn" disabled>New Round</button>
+    </div>
+
+    <pre id="log" class="log"></pre>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

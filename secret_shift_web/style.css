@@ -1,0 +1,39 @@
+:root{
+  --bg:#0f172a; --fg:#e5e7eb; --muted:#94a3b8;
+  --accent:#38bdf8; --ok:#22c55e; --warn:#fbbf24;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+.container{max-width:900px;margin:0 auto}
+h1{margin:0 0 10px}
+.desc{margin:0 0 18px;color:var(--muted)}
+.statusbar{display:flex;gap:16px;margin-bottom:12px;opacity:.9}
+.panel{padding:14px;border:1px solid #334155;border-radius:12px;background:#111827;margin-bottom:12px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.controls input{padding:8px 10px;border-radius:8px;border:1px solid #334155;background:#0b1220;color:var(--fg);width:100px}
+.controls button{padding:8px 12px;border-radius:10px;border:1px solid #334155;background:#1f2937;color:var(--fg);cursor:pointer}
+.controls button:hover{background:#0b1220}
+.log{background:#0b1220;border:1px solid #334155;border-radius:12px;padding:12px;min-height:160px;white-space:pre-wrap}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .info{color:var(--accent)}
+#cipher{font-family:ui-monospace, SF Mono, Menlo, Consolas, monospace}
+
+/* ===== Responsive: Secret Shift ===== */
+@media (max-width: 1024px){
+  .panel{ padding: 12px; }
+}
+@media (max-width: 820px){
+  .statusbar{ flex-direction: column; gap: 6px; }
+  .controls{ gap: 8px; }
+}
+@media (max-width: 640px){
+  body{ padding-bottom: env(safe-area-inset-bottom); }
+  .controls{ flex-direction: column; align-items: stretch; }
+  .controls input{ width: 100%; }
+  .controls button{ width: 100%; }
+  .panel{ font-size: 15px; }
+}
+@media (max-width: 420px){
+  .panel{ padding: 10px; }
+  .log{ min-height: 120px; }
+  .desc{ font-size: 14px; }
+}
