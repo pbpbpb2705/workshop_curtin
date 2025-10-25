@@ -1,4 +1,4 @@
-// Switch & Bulb — Modifiable logic per switch + quality check
+// Switch & Bulb — Modifiable logic per switch + quality check + back button
 const bulbsEl = document.getElementById('bulbs');
 const switchesEl = document.getElementById('switches');
 const statusEl = document.getElementById('status');
@@ -142,13 +142,11 @@ function updateStatus() {
 
   statusEl.classList.remove('win', 'warn');
   if (allOn && bad.length > 0) {
-    // Output is satisfied, but logic is not correct
     const list = bad.map(i => i+1).join(', ');
     statusEl.classList.add('warn');
     statusEl.textContent = `Not quite yet — the logic for switch(es) ${list} makes the bulb ON regardless of input (IF ON→ON, ELSE→ON). Adjust the ELSE branch.`;
     return;
   }
-
   if (allOn) {
     statusEl.classList.add('win');
     statusEl.textContent = 'All bulbs are ON! 🎉';
@@ -158,4 +156,11 @@ function updateStatus() {
 }
 
 resetBtn.addEventListener('click', reset);
+
+// Back to Home navigation
+(function(){
+  var btn = document.getElementById('backHomeSB');
+  if (btn) btn.addEventListener('click', function(){ location.assign('../index.html'); });
+})();
+
 render();

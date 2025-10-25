@@ -1,4 +1,4 @@
-// Secret Shift — Web port with live preview on input (no Preview button)
+// Secret Shift — Web port with live preview, back button
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const PHRASES = (window.__PHRASES__ && Array.isArray(window.__PHRASES__)) ? window.__PHRASES__ : [
   "HELLO WORLD","CYBERSECURITY","SINGAPORE","THE NEW ERA","KNOWLEDGE IS POWER"
@@ -107,5 +107,11 @@ elGuess.addEventListener('input', updatePreviewFromInput);
 btnGuess.addEventListener('click', onGuess);
 btnSkip.addEventListener('click', onSkip);
 btnNew.addEventListener('click', newRound);
+
+// Back to Home navigation
+(function(){
+  var btn = document.getElementById('backHomeSS');
+  if (btn) btn.addEventListener('click', function(){ location.assign('../index.html'); });
+})();
 
 newRound();
