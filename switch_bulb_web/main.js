@@ -8,7 +8,8 @@ const resetBtn = document.getElementById('resetBtn');
 let currentSwitch = [false, false, false, false, false];
 // Logic mapping per switch: what the bulb should be for ON and OFF branches
 // Default mirrors the original: if ON -> ON, else -> OFF
-let logicConfig = Array.from({length:5}, () => ({ ifOn: true, ifOff: false }));
+let logicConfig = Array.from({length:5}, () => ({ ifOn: false, ifOff: false }));
+
 
 function computeBulbState(idx) {
   const sw = currentSwitch[idx];
@@ -94,7 +95,7 @@ function renderSwitches() {
     // Logic controls
     const controls = document.createElement('div');
     controls.className = 'logic-controls';
-    controls.appendChild(selectControl('If switch is ON → bulb =', logicConfig[idx].ifOff, v => { logicConfig[idx].ifOff = v; render(); }));
+    controls.appendChild(selectControl('If switch is ON → bulb =', logicConfig[idx].ifOn, v => { logicConfig[idx].ifOn = v; render(); }));
     controls.appendChild(selectControl('Else (switch OFF) → bulb =', logicConfig[idx].ifOff, v => { logicConfig[idx].ifOff = v; render(); }));
 
     // Code-like block
